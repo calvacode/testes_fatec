@@ -48,9 +48,9 @@ public class UC01RegistraEmprestimoDeLivro {
 	public void CT03UC01FB_registrar_emprestimo_com_dados_invalidos(){
 		try{
 			servico.empresta(null, usuario);
-			fail ("deveria lançar uma exceção");
+			fail ("deveria lanï¿½ar uma exceï¿½ï¿½o");
 		}catch(RuntimeException e){
-			assertEquals("Dados inválidos.", e.getMessage());
+			assertEquals("Dados invï¿½lidos.", e.getMessage());
 		}
 	}
 	@Test
@@ -65,6 +65,13 @@ public class UC01RegistraEmprestimoDeLivro {
 	}
 	@Test
 	public void CT05UC01FB_registrar_emprestimo_com_data_invalida() {
-		assertTrue(emprestimo.validaData("29/03/2000"));
+		assertFalse(emprestimo.validaData("29/03/000")); 
 	}
+	
+	@Test(expected =  RuntimeException.class)
+	public void CT01UC01FB_registrar_emprestimo_com_null() {
+		assertNotNull(servico.empresta(null, null));
+	}
+	
+	
 }

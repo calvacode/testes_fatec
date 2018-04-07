@@ -26,7 +26,11 @@ public class Livro {
 	public String getAutor() {
 		return autor;
 	}
+	
 	public void setAutor(String autor) {
+		if (autor == "" | autor == null){
+			throw new RuntimeException("Autor invalido");
+		}
 		this.autor = autor;
 	}
 

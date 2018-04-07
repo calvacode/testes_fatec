@@ -15,6 +15,9 @@ public class Emprestimo {
 	}
 
 	public void setLivro(Livro livro) {
+		if(livro == null) 
+			throw new RuntimeException("Livro não pode ser nulo");
+		
 		this.livro = livro;
 	}
 
@@ -23,6 +26,8 @@ public class Emprestimo {
 	}
 
 	public void setUsuario(Usuario usuario) {
+		if(usuario == null) 
+			throw new RuntimeException("Usuario não pode ser nulo");
 		this.usuario = usuario;
 	}
 
@@ -31,6 +36,8 @@ public class Emprestimo {
 	}
 
 	public void setDataEmprestimo(String dataEmprestimo) {
+		if(!validaData(dataEmprestimo)) 
+			throw new RuntimeException("Formato de data inválido");
 		this.dataEmprestimo = dataEmprestimo;
 	}
 
@@ -39,6 +46,8 @@ public class Emprestimo {
 	}
 
 	public void setDataDevolucao(String data) {
+		if(!validaData(data)) 
+			throw new RuntimeException("Formato de data inválido");
 		this.dataDevolucao = data;
 	}
 
@@ -47,10 +56,10 @@ public class Emprestimo {
 	 * se a data estiver no formato valido e false para formato invalido
 	 */
 	public boolean validaData(String data) {
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat df = new SimpleDateFormat("dd/MM/YYYY");
 		df.setLenient(false); //
 		try {
-			df.parse(data); // data v�lida
+			df.parse(data); // data v�lida
 			return true;
 		} catch (ParseException ex) {
 			return false;

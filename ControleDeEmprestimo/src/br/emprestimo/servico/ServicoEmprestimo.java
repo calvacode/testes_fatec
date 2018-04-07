@@ -11,7 +11,7 @@ public class ServicoEmprestimo {
 
 	public Emprestimo empresta(Livro livro, Usuario usuario) {
 		if (livro == null | usuario == null) {
-			throw new RuntimeException("Dados inválidos.");
+			throw new RuntimeException("Dados invï¿½lidos.");
 		} else {
 			Emprestimo emprestimo = new Emprestimo();
 			emprestimo.setLivro(livro);

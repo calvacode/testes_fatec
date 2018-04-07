@@ -32,7 +32,6 @@ public class UC06CadastrarLivro {
 	public void CT02UC06CadastrarLivro_com_isbn_invalido_nulo() {
 		livro.setIsbn(null);
 	}
-	
 
 	@Test
 	public void CT03UC06CadastrarLivro_com_isbn_valido() {
@@ -42,10 +41,40 @@ public class UC06CadastrarLivro {
 	public void CT04UC01CadastrarLivro_com_isbn_invalido(){
 		try{
 			livro.setIsbn("");
-			fail ("deveria lançar uma exceção");
+			fail ("deveria lanï¿½ar uma exceï¿½ï¿½o");
 		}catch(RuntimeException e){
 			assertEquals("ISBN invalido", e.getMessage());
 		}
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void CT01UC06CadastrarLivro_com_autor_invalido_branco() {
+		livro.setAutor("");
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void CT02UC06CadastrarLivro_com_autor_invalido_nulo() {
+		livro.setAutor(null);
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void CT01UC06CadastrarLivro_com_titulo_invalido_branco() {
+		livro.setTitulo("");
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void CT02UC06CadastrarLivro_com_titulo_invalido_nulo() {
+		livro.setTitulo(null);
+	}
+	
+	@Test
+	public void CT02UC06CadastrarLivro_get_titulo() {
+	  assertEquals(livro.getTitulo(), "Engenharia de Software");
+	}
+	
+	@Test
+	public void CT02UC06CadastrarLivro_get_autor() {
+	  assertEquals(livro.getAutor(), "Pressman");
 	}
 }
 
